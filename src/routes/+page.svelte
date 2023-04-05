@@ -17,12 +17,11 @@
 				<img src={welcome_fallback} alt="Welcome" />
 			</picture>
 		</span>
-
-		to your new<br />SvelteKit app
+		<span>This is the globally accessible welcome page</span>
 	</h1>
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		Counter component at <strong>./src/routes/Counter.svelte</strong>:
 	</h2>
 
 	<Counter />
