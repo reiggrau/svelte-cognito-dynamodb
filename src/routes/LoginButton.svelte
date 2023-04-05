@@ -1,10 +1,15 @@
+<script>
+    import { signIn, signOut } from "@auth/sveltekit/client"
+    import { page } from "$app/stores"
+</script>
+
 <div>
-    <h2>
-        user@test-project.com
-    </h2>
-    <h2>
-        LOGIN
-    </h2>
+    {#if $page.data.session}
+    <h2>{$page.data.session.user?.email}</h2>
+    <h2 on:click={() => signOut("cognito")}>Sign out</h2>
+    {:else}
+    <h2 on:click={() => signIn("cognito")}>Sign in</h2>
+    {/if}
 </div>
 
 <style>

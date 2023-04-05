@@ -1,20 +1,19 @@
-# create-svelte
+# source guides
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+- [Svelte](https://kit.svelte.dev/docs/creating-a-project)
 
-## Creating a project
+## Svelte setup
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Creating a Svelte project
+
+The easiest way to start building a SvelteKit app is to run npm create:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
+# create a new project in a new 'my-app' directory
 npm create svelte@latest my-app
+cd my-app
+npm install
 ```
-
-## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -25,7 +24,17 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### First steps
+
+There are two basic concepts:
+
+Each page of your app is a Svelte component
+
+- You create pages by adding files to the src/routes directory of your project. These will be server-rendered so that a user's first visit to your app is as - fast as possible, then a client-side app takes over
+
+Try editing the files to get a feel for how everything works.
+
+### Building
 
 To create a production version of your app:
 
@@ -36,4 +45,5 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-# svelte-cognito-dynamodb
+
+## SvelteKit Auth setup

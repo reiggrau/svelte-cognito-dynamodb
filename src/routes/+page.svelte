@@ -1,5 +1,4 @@
 <script>
-	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
 </script>
@@ -19,12 +18,6 @@
 		</span>
 		<span>This is the globally accessible welcome page</span>
 	</h1>
-
-	<h2>
-		Counter component at <strong>./src/routes/Counter.svelte</strong>:
-	</h2>
-
-	<Counter />
 </section>
 
 <style>
