@@ -22,6 +22,6 @@ export const handle = SvelteKitAuth({
 			clientId: COGNITO_CLIENT_ID,
 			clientSecret: COGNITO_CLIENT_SECRET
 		})
-	],
-	secret: AUTH_SECRET
+	]
+	// secret: AUTH_SECRET
 });

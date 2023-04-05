@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     export let provider: any;
 </script>
 
@@ -9,4 +9,4 @@
   <button type="submit" class="button">
     <slot>Sign in with {provider.name}</slot>
   </button>
-</form>
+</form> -->
