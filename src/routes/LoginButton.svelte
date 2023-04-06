@@ -1,16 +1,15 @@
 <script>
-    // import { signIn, signOut } from "@auth/sveltekit/client"
+    import { signIn, signOut } from "@auth/sveltekit/client"
     import { page } from "$app/stores"
 </script>
 
 <div>
-    <!-- {#if $page.data.session}
+    {#if $page.data.session}
     <h2>{$page.data.session.user?.email}</h2>
     <h2 on:click={() => signOut()}>Sign out</h2>
     {:else}
     <h2 on:click={() => signIn()}>Sign in</h2>
-    {/if} -->
-    <h2>Sign in</h2>
+    {/if}
 </div>
 
 <style>
