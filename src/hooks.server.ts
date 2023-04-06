@@ -16,12 +16,12 @@ export const handle = SvelteKitAuth({
 		Google({
 			clientId: GOOGLE_ID,
 			clientSecret: GOOGLE_SECRET
-		}),
-		Cognito({
-			issuer: COGNITO_ISSUER,
-			clientId: COGNITO_CLIENT_ID,
-			clientSecret: COGNITO_CLIENT_SECRET
 		})
+		// Cognito({
+		// 	issuer: COGNITO_ISSUER,
+		// 	clientId: COGNITO_CLIENT_ID,
+		// 	clientSecret: COGNITO_CLIENT_SECRET
+		// })
 	]
 	// secret: AUTH_SECRET
 });

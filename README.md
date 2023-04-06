@@ -102,3 +102,5 @@ The callback URL used by the providers must be set to the following, unless you 
 # Signing in and signing out
 
 The data for the current session in this example was made available through the $page store which can be set through the root +page.server.ts file. It is not necessary to store the data there, however, this makes it globally accessible throughout your application simplifying state management.
+
+<img src="public/svelteAuth_01.gif">
