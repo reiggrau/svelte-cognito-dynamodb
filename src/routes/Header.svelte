@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
-	// import LoginButton from './LoginButton.svelte';
+	import LoginButton from './LoginButton.svelte';
 </script>
 
 <header>
@@ -36,7 +36,7 @@
 	</nav>
 
 	<div>
-		<!-- <LoginButton /> -->
+		<LoginButton />
 	</div>
 </header>
 

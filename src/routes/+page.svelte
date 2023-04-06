@@ -16,8 +16,13 @@
 				<img src={welcome_fallback} alt="Welcome" />
 			</picture>
 		</span>
-		<span>This is the globally accessible welcome page</span>
 	</h1>
+    <h1>
+        This is the default page <bold>~/src/routes/+page.svelte</bold>
+    </h1>
+    <h1>
+        This page is globally accessible
+    </h1>
 </section>
 
 <style>

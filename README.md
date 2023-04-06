@@ -15,6 +15,8 @@ cd my-app
 npm install
 ```
 
+NOTE: For this project I used the Svelte Demo App with Typescript as a template.
+
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
