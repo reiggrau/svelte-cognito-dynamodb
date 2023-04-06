@@ -7,11 +7,11 @@
 	<Header />
 
 	<main>
-		<slot />
+		<!-- <slot /> -->
 	</main>
 
 	<footer>
-		<p>This (and the header) is part of the layout file <strong>./src/routes/+layout.svelte</strong></p>
+		<p>This (and the Header) is part of the layout file <strong>./src/routes/+layout.svelte</strong></p>
 	</footer>
 </div>
 
