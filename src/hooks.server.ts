@@ -15,10 +15,10 @@ import {
 
 export const handle = SvelteKitAuth({
 	providers: [
-		// Google({
-		// 	clientId: GOOGLE_ID,
-		// 	clientSecret: GOOGLE_SECRET
-		// }) as OAuthConfig<Profile>,
+		Google({
+			clientId: GOOGLE_ID,
+			clientSecret: GOOGLE_SECRET
+		}) as OAuthConfig<Profile>,
 		Cognito({
 			clientId: COGNITO_ID,
 			clientSecret: COGNITO_SECRET,
