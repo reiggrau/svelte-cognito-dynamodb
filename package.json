@@ -31,6 +31,9 @@
 	"dependencies": {
 		"@auth/core": "^0.5.1",
 		"@auth/sveltekit": "^0.3.0",
-		"@fontsource/fira-mono": "^4.5.10"
+		"@fontsource/fira-mono": "^4.5.10",
+		"@next-auth/dynamodb-adapter": "^3.0.1",
+		"aws-sdk": "^2.1358.0",
+		"next-auth": "^4.22.0"
 	}
 }
