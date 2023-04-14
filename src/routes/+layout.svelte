@@ -1,6 +1,7 @@
 <script>
-	import Header from './Header.svelte';
 	import './styles.css';
+	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
 </script>
 
 <div class="app">
@@ -10,9 +11,7 @@
 		<slot />
 	</main>
 
-	<footer>
-		<p>This (and the Header) is part of the default layout <strong>~/src/routes/+layout.svelte</strong></p>
-	</footer>
+	<Footer />
 </div>
 
 <style>
@@ -31,19 +30,5 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
 	}
 </style>

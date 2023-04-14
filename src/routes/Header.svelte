@@ -6,7 +6,7 @@
 </script>
 
 <header>
-	<div class="corner">
+	<div class="cornerLeft">
 		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
 		</a>
@@ -24,10 +24,10 @@
 				<a href="/">Home</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/restricted' ? 'page' : undefined}>
-				<a href="/restricted">Restricted</a>
+				<a href="/user">User</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/public">Public</a>
+				<a href="/admin">Admin</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -35,35 +35,37 @@
 		</svg>
 	</nav>
 
-	<div>
+	<div class="cornerRight">
 		<LoginButton />
 	</div>
 </header>
 
 <style>
 	header {
-		display: flex;
-		justify-content: space-between;
+		display: inline-grid;
+		grid-template-columns: 1fr min-content 1fr;
 	}
 
-	.corner {
+	.cornerLeft {
 		width: 3em;
 		height: 3em;
 		display: flex;
+		justify-self: start;
 	}
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	.cornerLeft a {
 		width: 100%;
 		height: 100%;
 	}
 
-	.corner img {
+	.cornerLeft img {
 		width: 2em;
 		height: 2em;
 		object-fit: contain;
+	}
+
+	.cornerRight {
+		justify-self: end;
 	}
 
 	nav {
@@ -88,6 +90,7 @@
 		margin: 0;
 		height: 3em;
 		display: flex;
+		gap: 3em;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
