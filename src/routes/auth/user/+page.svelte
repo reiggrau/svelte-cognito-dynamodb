@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 
 </script>
 
@@ -9,7 +10,11 @@
 
 <section>
     <h1>This is the user page</h1>
-    <h1>This page is accessible only to users</h1>
+    <h2>This page is accessible only to users</h2>
+	{#if $page.data.session}
+	<h2>User info:</h2>
+	<pre><span>User:</span> {JSON.stringify($page.data.session.user)}</pre>
+	{/if}
 </section>
 
 <style>
@@ -23,5 +28,12 @@
 
 	h1 {
 		width: 100%;
+	}
+
+	pre {
+    	@apply bg-gray-800 text-white p-3 my-3 rounded shadow overflow-x-auto;
+	}
+	pre span {
+    	@apply text-green-400;
 	}
 </style>

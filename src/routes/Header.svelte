@@ -23,12 +23,14 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/restricted' ? 'page' : undefined}>
-				<a href="/user">User</a>
+			<li aria-current={$page.url.pathname.startsWith('/auth/user') ? 'page' : undefined}>
+				<a href="/auth/user">User</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/admin">Admin</a>
+			{#if $page.data.session}
+			<li aria-current={$page.url.pathname.startsWith('/auth/admin') ? 'page' : undefined}>
+				<a href="/auth/admin">Admin</a>
 			</li>
+			{/if}
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
