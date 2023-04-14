@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-
 </script>
 
 <svelte:head>
@@ -12,12 +11,11 @@
     <h1>This is the user page</h1>
     <h2>This page is accessible only to users</h2>
 	{#if $page.data.session}
-	<h2>User info:</h2>
 	<pre><span>User:</span> {JSON.stringify($page.data.session.user)}</pre>
 	{/if}
 </section>
 
-<style>
+<style lang="postcss">
 	section {
 		display: flex;
 		flex-direction: column;
@@ -31,9 +29,9 @@
 	}
 
 	pre {
-    	@apply bg-gray-800 text-white p-3 my-3 rounded shadow overflow-x-auto;
+    	@apply bg-gray-900 text-white p-3 my-3 rounded shadow overflow-x-auto;
 	}
 	pre span {
-    	@apply text-green-400;
+    	@apply text-orange-400;
 	}
 </style>

@@ -1,5 +1,6 @@
 <script>
 	import './styles.css';
+	import "../app.css";
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 </script>
