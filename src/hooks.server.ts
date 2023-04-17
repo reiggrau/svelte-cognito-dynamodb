@@ -23,16 +23,10 @@ import {
 	NEXT_AUTH_AWS_REGION
 } from '$env/static/private';
 
-// export const handle = SvelteKitAuth({
-// 	providers: [
-// 		Cognito({
-// 			clientId: COGNITO_ID,
-// 			clientSecret: COGNITO_SECRET,
-// 			issuer: COGNITO_ISSUER
-// 		}) as OAuthConfig<Profile>
-// 	]
-// });
+// AUTH
+// First handle authentication, then authorization
 
+// AUTHENTICATION
 const config: DynamoDBClientConfig = {
 	credentials: {
 		accessKeyId: NEXT_AUTH_AWS_ACCESS_KEY,
@@ -48,6 +42,60 @@ const client = DynamoDBDocument.from(new DynamoDB(config), {
 		convertClassInstanceToMap: true
 	}
 });
+
+export const handle: Handle = sequence(
+	SvelteKitAuth({
+		providers: [
+			Cognito({
+				clientId: COGNITO_ID,
+				clientSecret: COGNITO_SECRET,
+				issuer: COGNITO_ISSUER
+			}) as OAuthConfig<Profile>
+		],
+		adapter: DynamoDBAdapter(client, {
+			tableName: 'opc-test-table',
+			partitionKey: 'pk',
+			sortKey: 'sk',
+			indexName: 'GSI1',
+			indexPartitionKey: 'GSI1PK',
+			indexSortKey: 'GSI1SK'
+		}) as any,
+		secret: AUTH_SECRET
+	}),
+	authorization
+); // Each function acts as a middleware, receiving the request handle, and returning a handle which gets passed to the next function
+
+// AUTHORIZATION
+async function authorization({ event, resolve }: any) {
+	// Protect any routes under /user
+	if (event.url.pathname.startsWith('/auth')) {
+		const session = await event.locals.getSession();
+
+		if (!session) throw redirect(303, '/auth/signin?csrf=true');
+
+		if (
+			event.url.pathname.endsWith('/admin') &&
+			session.user.email !== 'guillem.reig@on-promise.cloud'
+		) {
+			throw redirect(303, '/');
+		}
+	}
+
+	// If the request is still here, just proceed as normally
+	return resolve(event);
+}
+
+// OBSOLETE
+
+// export const handle = SvelteKitAuth({
+// 	providers: [
+// 		Cognito({
+// 			clientId: COGNITO_ID,
+// 			clientSecret: COGNITO_SECRET,
+// 			issuer: COGNITO_ISSUER
+// 		}) as OAuthConfig<Profile>
+// 	]
+// });
 
 // export const handle = SvelteKitAuth({
 // 	providers: [
@@ -71,45 +119,3 @@ const client = DynamoDBDocument.from(new DynamoDB(config), {
 // 	// },
 // 	secret: AUTH_SECRET
 // });
-
-async function authorization({ event, resolve }: any) {
-	// Protect any routes under /user
-	if (event.url.pathname.startsWith('/auth')) {
-		const session = await event.locals.getSession();
-		if (!session) {
-			throw redirect(303, '/auth/signin?csrf=true');
-		}
-	}
-
-	// If the request is still here, just proceed as normally
-	return resolve(event);
-}
-
-// First handle authentication, then authorization
-// Each function acts as a middleware, receiving the request handle
-// And returning a handle which gets passed to the next function
-export const handle: Handle = sequence(
-	SvelteKitAuth({
-		providers: [
-			Cognito({
-				clientId: COGNITO_ID,
-				clientSecret: COGNITO_SECRET,
-				issuer: COGNITO_ISSUER
-			}) as OAuthConfig<Profile>
-		],
-		adapter: DynamoDBAdapter(client, {
-			tableName: 'opc-test-table',
-			partitionKey: 'pk',
-			sortKey: 'sk',
-			indexName: 'GSI1',
-			indexPartitionKey: 'GSI1PK',
-			indexSortKey: 'GSI1SK'
-		}) as any,
-		// session: {
-		// 	maxAge: 60 * 60 * 24 * 365,
-		// 	strategy: 'jwt'
-		// },
-		secret: AUTH_SECRET
-	}),
-	authorization
-);

@@ -3,13 +3,14 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>OPC Svelte | User</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
 <section>
     <h1>This is the user page</h1>
     <h2>This page is accessible only to users</h2>
+	<h2>It is protected <strong>globally</strong> by <strong>~/src/hooks.server.ts</strong></h2>
 	{#if $page.data.session}
 	<pre><span>User:</span> {JSON.stringify($page.data.session.user)}</pre>
 	{/if}

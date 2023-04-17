@@ -9,7 +9,7 @@
 	<Header />
 
 	<main>
-		<slot />
+		<slot /> <!-- '+page.svelte' renders here-->
 	</main>
 
 	<Footer />

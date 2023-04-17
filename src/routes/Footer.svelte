@@ -1,6 +1,4 @@
 <script lang="ts">
-    console.log("Hello! I am the Footer component!");
-
     let count: number = 0;
 
     function countUp(): void {

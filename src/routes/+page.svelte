@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>OPC Svelte | Home</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 

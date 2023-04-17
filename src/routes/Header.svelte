@@ -26,7 +26,7 @@
 			<li aria-current={$page.url.pathname.startsWith('/auth/user') ? 'page' : undefined}>
 				<a href="/auth/user">User</a>
 			</li>
-			{#if $page.data.session}
+			{#if $page.data.session && $page.data.session.user?.email === "guillem.reig@on-promise.cloud"}
 			<li aria-current={$page.url.pathname.startsWith('/auth/admin') ? 'page' : undefined}>
 				<a href="/auth/admin">Admin</a>
 			</li>
